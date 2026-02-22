@@ -24,6 +24,8 @@ public class PlayerMovePresenter : ITickable
         float currentTime = Time.time;
         Vector2 moveInput = _input.GetMoveInput();
 
+        Debug.Log("test");
+
         if (_input.GetDashInput() && _model.CanDash(currentTime))
         {
             StartDash(currentTime);
