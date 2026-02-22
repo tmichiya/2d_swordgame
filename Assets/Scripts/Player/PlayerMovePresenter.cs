@@ -1,7 +1,8 @@
+using NUnit.Framework;
 using UnityEngine;
 using VContainer.Unity;
 
-public class PlayerMovePresenter : ITickable
+public class PlayerMovePresenter : ITickable, IStartable
 {
     private readonly PlayerMoveModel _model;
     private readonly PlayerMoveView _view;
@@ -19,12 +20,20 @@ public class PlayerMovePresenter : ITickable
         _stats = stats;
     }
 
+    public void Start()
+    {
+        _view.SetDashVisual(false);
+    }
+
     public void Tick()
     {
         float currentTime = Time.time;
         Vector2 moveInput = _input.GetMoveInput();
 
-        Debug.Log("test");
+        if (moveInput != Vector2.zero)
+        {
+            Debug.Log("test");
+        }
 
         if (_input.GetDashInput() && _model.CanDash(currentTime))
         {
@@ -36,6 +45,9 @@ public class PlayerMovePresenter : ITickable
             _dashTimer -= Time.deltaTime;
             if (_dashTimer <= 0) EndDash();
         }
+
+        var velocity = _model.CalculateVelocity(moveInput, _isDashing);
+        _view.SetVelocity(velocity);
     }
 
     private void StartDash(float time)
