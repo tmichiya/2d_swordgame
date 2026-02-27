@@ -153,7 +153,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -164,7 +164,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &326220375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoveView
   rb: {fileID: 326220374}
-  dashTrail: {fileID: 0}
+  dashTrail: {fileID: 1844026779}
 --- !u!212 &326220376
 SpriteRenderer:
   serializedVersion: 2
@@ -507,9 +507,10 @@ MonoBehaviour:
   parentReference:
     TypeName: GameLifetimeScope
   autoRun: 1
-  autoInjectGameObjects: []
-  playerView: {fileID: 0}
-  playerStats: {fileID: 0}
+  autoInjectGameObjects:
+  - {fileID: 326220373}
+  playerView: {fileID: 326220375}
+  playerStats: {fileID: 11400000, guid: f066b73c1ddd8401fbbbad90386d1327, type: 2}
 --- !u!4 &1193670975
 Transform:
   m_ObjectHideFlags: 0
@@ -626,11 +627,11 @@ TrailRenderer:
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -2.1851716
-        outSlope: -2.1851716
+        inSlope: 0.019400353
+        outSlope: 0.019400353
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.17681158
+        inWeight: 0.57272726
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
